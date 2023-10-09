@@ -1,5 +1,5 @@
 import { Component } from '@angular/core';
-import { Krampouz } from './interfaces/krampouz.interface';
+import { Krampouz } from './shared/interfaces/krampouz.interface';
 
 @Component({
   selector: 'app-root',

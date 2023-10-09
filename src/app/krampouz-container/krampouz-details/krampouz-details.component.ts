@@ -1,5 +1,5 @@
 import { Component, Input, OnInit } from '@angular/core';
-import { Krampouz } from 'src/app/interfaces/krampouz.interface';
+import { Krampouz } from 'src/app/shared/interfaces/krampouz.interface';
 
 
 @Component({

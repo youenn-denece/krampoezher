@@ -1,5 +1,5 @@
 import { Component, OnInit, Input, Output, EventEmitter } from '@angular/core';
-import { Krampouz } from 'src/app/interfaces/krampouz.interface';
+import { Krampouz } from 'src/app/shared/interfaces/krampouz.interface';
 
 
 
@@ -10,6 +10,7 @@ import { Krampouz } from 'src/app/interfaces/krampouz.interface';
 })
 export class KrampouzListComponent implements OnInit {
   @Input() public krampouzs: Krampouz[] = [];
+  @Input() public selectedKrampouz?: Krampouz;
   @Output() private changeKrampouz: EventEmitter<number> = new EventEmitter; 
 
   constructor() { }

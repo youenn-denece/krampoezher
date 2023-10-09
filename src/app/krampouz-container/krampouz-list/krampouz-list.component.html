@@ -1,6 +1,7 @@
 <h3 class="mb-20">Liste des crèpes</h3>
 <ul class=" list-primary mb-20">
     <li
+        [appSelected]="krampouz.name === selectedKrampouz?.name"
         (click)="selectKrampouz(index)"
         *ngFor="let krampouz of krampouzs; let index = index"
         >

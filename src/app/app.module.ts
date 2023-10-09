@@ -7,6 +7,7 @@ import { KrampouzListComponent } from './krampouz-container/krampouz-list/krampo
 import { KrampouzDetailsComponent } from './krampouz-container/krampouz-details/krampouz-details.component';
 import { KrampouzContainerComponent } from './krampouz-container/krampouz-container.component';
 import { NgOptimizedImage } from '@angular/common';
+import { SelectedDirective } from './shared/directives/selected.directive';
 
 @NgModule({
   declarations: [
@@ -14,7 +15,8 @@ import { NgOptimizedImage } from '@angular/common';
     HeaderComponent,
     KrampouzListComponent,
     KrampouzDetailsComponent,
-    KrampouzContainerComponent
+    KrampouzContainerComponent,
+    SelectedDirective
   ],
   imports: [
     BrowserModule,
