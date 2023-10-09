@@ -26,7 +26,6 @@ export class SelectedDirective implements OnChanges{
       }
   }
 
-
   constructor() { }
 
 }

@@ -21,13 +21,11 @@ export class KrampouzContainerComponent implements OnInit, OnDestroy {
   ngOnInit(): void {
     this.subscription.add(this.krampouzService.krampouzs$.subscribe((krampouzs: Krampouz[]) => {
       this.krampouzs = krampouzs;
-    }
-    ));
+    }));
 
     this.subscription.add(this.krampouzService.selectedKrampouz$.subscribe((selectedKrampouz: Krampouz) => {
       this.selectedKrampouz = selectedKrampouz;
-    }
-    ));
+    }));
   }
 
   ngOnDestroy(): void {

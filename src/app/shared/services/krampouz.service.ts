@@ -37,5 +37,7 @@ export class KrampouzService {
     this.selectedKrampouz$.next(this.krampouzs$.value[index]);
   }
 
-  constructor() {}
+  constructor() {
+    
+  }
 }

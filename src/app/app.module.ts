@@ -25,4 +25,5 @@ import { SelectedDirective } from './shared/directives/selected.directive';
   providers: [],
   bootstrap: [AppComponent]
 })
+
 export class AppModule { }

@@ -11,10 +11,9 @@ export class KrampouzListComponent implements OnInit {
   @Input() public selectedKrampouz?: Krampouz;
   @Output() private changeKrampouz: EventEmitter<number> = new EventEmitter; 
 
-  constructor() { }
+  constructor() {}
 
-  ngOnInit(): void {
-  }
+  ngOnInit(): void {}
 
   public selectKrampouz(index: number): void {
     this.changeKrampouz.emit(index);
