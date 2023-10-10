@@ -4,5 +4,5 @@ export interface Krampouz {
     name: string;
     img: string;
     description: string;
-    ingredients?: Ingredient[];
+    ingredients: Ingredient[];
 }

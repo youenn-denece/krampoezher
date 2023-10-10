@@ -8,15 +8,8 @@ import { Krampouz } from 'src/app/shared/interfaces/krampouz.interface';
 })
 export class KrampouzListComponent implements OnInit {
   @Input() public krampouzs: Krampouz[] = [];
-  @Input() public selectedKrampouz?: Krampouz;
-  @Output() private changeKrampouz: EventEmitter<number> = new EventEmitter; 
 
   constructor() {}
 
   ngOnInit(): void {}
-
-  public selectKrampouz(index: number): void {
-    this.changeKrampouz.emit(index);
-  }
-
 }

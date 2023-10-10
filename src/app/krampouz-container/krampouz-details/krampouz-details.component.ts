@@ -1,5 +1,8 @@
-import { Component, Input, OnInit } from '@angular/core';
+import { Component, OnInit } from '@angular/core';
 import { Krampouz } from 'src/app/shared/interfaces/krampouz.interface';
+import { PanierService } from '../../shared/services/panier.service';
+import { ActivatedRoute, ParamMap } from '@angular/router';
+import { KrampouzService } from '../../shared/services/krampouz.service';
 
 
 @Component({
@@ -8,11 +11,27 @@ import { Krampouz } from 'src/app/shared/interfaces/krampouz.interface';
   styleUrls: ['./krampouz-details.component.scss']
 })
 export class KrampouzDetailsComponent implements OnInit {
-  @Input() public krampouz!: Krampouz;
+  public krampouz!: Krampouz;
   
-  constructor() { }
+  constructor(
+    private panierService: PanierService,
+    private krampouzService: KrampouzService,
+    private activatedRoute : ActivatedRoute  
+  ) {}
 
-  ngOnInit(): void {
+  ngOnInit() {
+    this.activatedRoute.paramMap.subscribe((paramMap: ParamMap) => {
+      const krampouzIndex = paramMap.get('index');
+      if (krampouzIndex) {
+        this.krampouz = this.krampouzService.getKrampouz(+krampouzIndex);
+      }
+    });
+       
   }
 
+  public addToPanier(): void {
+    if(this.krampouz) {
+      this.panierService.addPanier(this.krampouz.ingredients);
+    } 
+  }
 }

@@ -1,12 +1,10 @@
 <h3 class="mb-20">Liste des crèpes</h3>
 <ul class=" list-primary mb-20">
-    <li
-        [appSelected]="krampouz.name === selectedKrampouz?.name"
-        (click)="selectKrampouz(index)"
-        *ngFor="let krampouz of krampouzs; let index = index"
-        >
+    <li [routerLink]="[index]"
+        routerLinkActive="active"
+        *ngFor="let krampouz of krampouzs; let index = index">
             {{ krampouz.name }}
         </li>
 </ul>
 
-<button class="btn btn-primary">Ajouter une crèpe</button>
+<button routerLink="new" class="btn btn-primary">Ajouter une crèpe</button>
