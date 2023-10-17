@@ -17,6 +17,7 @@ import { IngredientListComponent } from './panier-container/ingredient-list/ingr
 // routes
 import { APP_ROUTES } from './app.routes';
 import { KrampouzFormComponent } from './krampouz-container/krampouz-form/krampouz-form.component';
+import { ReactiveFormsModule } from '@angular/forms';
 
 
 @NgModule({
@@ -36,6 +37,7 @@ import { KrampouzFormComponent } from './krampouz-container/krampouz-form/krampo
     NgOptimizedImage,
     RouterModule,
     RouterModule.forRoot(APP_ROUTES),
+    ReactiveFormsModule,
   ],
   providers: [],
   bootstrap: [AppComponent]

@@ -39,6 +39,26 @@ export class KrampouzService {
       ]
     },
     {
+      name : 'Galette Andouille pommes camembert',
+      img:'https://www.kilometre-0.fr/wp-content/uploads/2019/01/images20170128Cuisine_mart325-1.jpg',
+      description: 'Une galette bretonne par excellence avec de l\'andouille de Guémené 🙂.',
+      ingredients: [
+        {
+          name: 'Andouille de Géméné',
+          quantity: 5,
+        },
+        {
+          name: 'Pommes',
+          quantity: 6,
+        },
+        {
+          name: 'Camembert',
+          quantity: 4,
+        },
+        
+      ]
+    },
+    {
       name : 'LA beurre sucre',
       img:'https://www.cuisineactuelle.fr/imgre/fit/http.3A.2F.2Fprd2-bone-image.2Es3-website-eu-west-1.2Eamazonaws.2Ecom.2Fcac.2F2018.2F09.2F25.2F9e7d56fc-f05f-4b62-b042-0dd0037f9358.2Ejpeg/400x400/quality/80/crop-from/center/crepes-beurre-sucre.jpeg',
       description: 'Que dire ??? Une bonne crêpe de forment à la mode finisterienne, beaucoup de beurre, un peu de sucre (roux pour les foufous) et pourquoi pas une pointe de crème fouetée pour le gourmands. ',
@@ -55,9 +75,26 @@ export class KrampouzService {
     },
   ]);
 
-  public getKrampouz(index: number) {
+  getKrampouz(index: number) {
     const krampouzs = this.krampouzs$.value;
     return krampouzs[index];
+  }
+
+  addKrampouz(krampouz: Krampouz): void {
+    const value = this.krampouzs$.value;
+    this.krampouzs$.next([...value, krampouz]); 
+  }
+
+  editKrampouz(editedKrampouz: Krampouz): void {
+    const value = this.krampouzs$.value;
+
+    this.krampouzs$.next(value.map((krampouz: Krampouz) => {
+      if(krampouz.name === editedKrampouz.name) {
+        return editedKrampouz;
+      } else {
+        return krampouz;
+      } 
+    }))
   }
 
   constructor() {

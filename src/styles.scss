@@ -17,6 +17,22 @@ a {
     color: var(--greengray);
 }
 
+input {
+    border: 1px solid #ddd;
+    border-radius: 3px;
+    padding: 8px 15px;
+}
+
+hr {
+    margin: 20px 0px;
+    border-top: 1px solid var(--lightgray)
+}
+
+button:disabled {
+    opacity: 0.5;
+    cursor: not-allowed;
+}
+
 :root {
     --font-family: 'Antonio', sans-serif;
     --primary:#874C62;
@@ -145,12 +161,19 @@ body {
     background-color: white;
     border: 0;
     border-radius: 3px;
+    &-secondary {
+        background-color: #442531;
+        color: white;
+        &:hover {
+            background-color:var(--secondary);
+        }
+        transition: background-color 0.4s;
+    }
     &-primary {
         background-color: var(--primary);
         color: white;
         &:hover {
             background-color: var(--secondary);
-            cursor: pointer;
         }
         transition: background-color 0.4s;
     }
