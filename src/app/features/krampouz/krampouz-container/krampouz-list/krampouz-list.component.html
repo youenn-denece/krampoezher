@@ -1,8 +1,9 @@
 <h3 class="mb-20">Liste des crèpes</h3>
-<ul class=" list-primary mb-20">
+<input class="mb-20 w-100" type="text" [(ngModel)]="search" placeholder="Rechercher une crêpe">
+<ul *ngIf="krampouzs" class=" list-primary mb-20">
     <li [routerLink]="[index]"
         routerLinkActive="active"
-        *ngFor="let krampouz of krampouzs; let index = index">
+        *ngFor="let krampouz of krampouzs! | filter:search; let index = index">
             {{ krampouz.name }}
         </li>
 </ul>

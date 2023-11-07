@@ -1,4 +1,4 @@
-<form [formGroup]="krampouzForm" (ngSubmit)="submit()">
+<form *ngIf="krampouzForm" [formGroup]="krampouzForm" (ngSubmit)="submit()">
     <div class="form-group d-flex flex-column">
         <label>Nom</label>
         <input formControlName="name" type="text">

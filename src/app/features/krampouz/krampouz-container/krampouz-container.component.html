@@ -1,6 +1,6 @@
 <div class="container d-flex flex-row">
     <app-krampouz-list
-        [krampouzs]="krampouzs"
+        [krampouzs]="krampouzs$ | async"
         class="flex-50 pr-30"
     ></app-krampouz-list>
 

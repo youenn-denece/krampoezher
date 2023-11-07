@@ -1,4 +1,4 @@
-import { Component, OnInit, Input, Output, EventEmitter } from '@angular/core';
+import { Component, OnInit, Input } from '@angular/core';
 import { Krampouz } from 'src/app/shared/interfaces/krampouz.interface';
 
 @Component({
@@ -7,7 +7,8 @@ import { Krampouz } from 'src/app/shared/interfaces/krampouz.interface';
   styleUrls: ['./krampouz-list.component.scss']
 })
 export class KrampouzListComponent implements OnInit {
-  @Input() public krampouzs: Krampouz[] = [];
+  @Input() public krampouzs: Krampouz[] | null = null;
+  public search = '';
 
   constructor() {}
 

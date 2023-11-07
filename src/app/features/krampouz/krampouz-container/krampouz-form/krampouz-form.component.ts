@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { FormArray, FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { ActivatedRoute, Router, ParamMap } from '@angular/router';
+import { first } from 'rxjs';
 import { Krampouz } from 'src/app/shared/interfaces/krampouz.interface';
 import { KrampouzService } from 'src/app/shared/services/krampouz.service';
 
@@ -30,15 +31,22 @@ export class KrampouzFormComponent implements OnInit {
     this.activatedRoute.paramMap.subscribe((paramMap: ParamMap) => {
       const index = paramMap.get('index');
       if(index !== null) {
-        this.krampouz = this.krampouzService.getKrampouz(+index);
+        this.krampouzService.getKrampouz(+index)
+        .pipe(first((x) => !!x))
+        .subscribe((krampouz: Krampouz) => {
+          this.krampouz = krampouz;
+          this.krampouzForm = this.initForm(this.krampouz);
+        });
+      } else {
+        this.krampouzForm = this.initForm();   
       }
-      this.initForm(this.krampouz);      
+         
     })
   
   }
 
-  private initForm(krampouz: Krampouz = {name:'', img:'', description:'', ingredients:[]}): void {
-    this.krampouzForm = this.fb.group({
+  private initForm(krampouz: Krampouz = {name:'', img:'', description:'', ingredients:[]}): FormGroup {
+    return this.fb.group({
     name: [krampouz.name, Validators.required],
     img: [krampouz.img, Validators.required],
     description: [krampouz.description, Validators.required],
@@ -63,9 +71,9 @@ export class KrampouzFormComponent implements OnInit {
 
   submit(): void {
     if(this.krampouz) {
-      this.krampouzService.editKrampouz(this.krampouzForm.value);
+      this.krampouzService.editKrampouz(this.krampouz._id!, this.krampouzForm.value).subscribe();
     } else {
-      this.krampouzService.addKrampouz(this.krampouzForm.value);
+      this.krampouzService.addKrampouz(this.krampouzForm.value).subscribe();
     }
     this.router.navigate(['../'], { relativeTo: this.activatedRoute });   
   }
